@@ -1,0 +1,1207 @@
+body {
+  margin: 0;
+}
+
+#navbar {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  padding: 25px;
+}
+
+.navbar-link:link {
+  color: #ffa500;
+}
+
+.navbar-link:visited {
+  color: fuchsia;
+}
+
+.navbar-link:hover {
+  color: lime;
+}
+
+#return-container {
+  margin-right: 100%;
+}
+
+#return-button {
+  font-size: 3rem;
+  position: fixed;
+  margin-top: 7px;
+  margin-left: 13px;
+}
+
+#return-button:hover {
+  cursor: pointer;
+}
+
+/* Home Page Styling */
+#home-page {
+  background-image: url("./assets/home-page-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#intro-container,
+#disclosures-container,
+#entrance-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+#intro-title,
+#disclosures-container,
+#disclosure-title {
+  background-color: rgb(128, 128, 128, 0.5);
+  border: 4px dashed black;
+}
+
+#intro-title {
+  color: ghostwhite;
+  text-align: center;
+  font-size: 5.5rem;
+  border-radius: 10%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#disclosure-title {
+  color: ghostwhite;
+  text-align: center;
+  font-size: 3rem;
+  border-radius: 45%;
+  padding: 40px;
+}
+
+#disclosures-list {
+  color: ghostwhite;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+#disclosures-container {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+#entrance-button-container {
+  margin-top: 50px;
+  padding-bottom: 75px;
+}
+
+#entrance-button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: darkmagenta;
+  box-shadow: 0 0 7px 12px lime;
+  border: none;
+  color: ghostwhite;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#entrance-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#entrance-button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#entrance-button:hover span {
+  padding-right: 25px;
+}
+
+#entrance-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* All Theories Page Styling */
+#all-theories-page {
+  background-image: url("./assets/all-theories-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+  padding-right: 35px;
+  margin-left: 50%;
+}
+
+#searchBar-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: ghostwhite;
+  position: fixed;
+}
+
+#searchBar-input {
+  margin-left: 7px;
+}
+
+#theory-library,
+#library-intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#library-intro-title {
+  color: cyan;
+  font-size: 2.7rem;
+  text-align: center;
+}
+
+.library-descrip {
+  color: cyan;
+  width: 30vw;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+#dropdown-button {
+  background-image: linear-gradient(to top left, cyan, royalblue);
+  color: ghostwhite;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-image: linear-gradient(to top left, lightseagreen, forestgreen);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content .theory-type {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content .theory-type:hover {
+  background-color: lightgreen;
+}
+
+#dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#dropdown:hover #dropdown-button {
+  cursor: pointer;
+}
+
+.theory-container {
+  width: 35vw;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  background-color: darkorchid;
+  border-radius: 7%;
+  box-shadow: 10px 10px 5px green;
+}
+
+.theory-image {
+  width: 30vw;
+}
+
+.theory-details-container {
+  padding: 25px;
+}
+
+.details-button {
+  width: 13vw;
+  padding: 15px;
+  border: none;
+  box-shadow: 5px -5px 3px black;
+  background-color: darkgreen;
+  color: ghostwhite;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.details-button:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to bottom right, deeppink, darkorchid);
+}
+
+.theory-title {
+  color: lightgoldenrodyellow;
+  font-size: 1.5rem;
+}
+
+/* Styling for the registration page */
+#registration-page {
+  background-image: url("./assets/registration-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#registration-error-message {
+  width: 17vw;
+  padding: 17px;
+  color: black;
+  border: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 139, 139, 0.9),
+    rgba(95, 158, 160, 0.6)
+  );
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+#registration-intro-container,
+#registration-disclosure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#registration-intro-title {
+  width: 35vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 3.2rem;
+  border: hidden;
+  border-radius: 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(220, 20, 60, 0.8),
+    rgba(250, 128, 114, 0.4)
+  );
+}
+
+.registration-descrip {
+  width: 35vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(128, 0, 0, 0.8),
+    rgba(255, 99, 71, 0.4)
+  );
+}
+
+#registration-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  padding: 25px;
+  width: 35vw;
+  border: none;
+  border-radius: 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 127, 80, 0.8),
+    rgba(178, 34, 34, 0.4)
+  );
+}
+
+#registration-form-container {
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+.registration-label {
+  padding-bottom: 15px;
+  color: ghostwhite;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.registration-input {
+  border: 2px dashed darkred;
+  height: 25px;
+  width: 20vw;
+  display: block;
+  margin-top: 7px;
+}
+
+#registration-submission-button {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 15vw;
+  color: ghostwhite;
+  border: none;
+  background-image: linear-gradient(to bottom left, indigo, hotpink);
+}
+
+#registration-submission-button:hover {
+  cursor: pointer;
+  box-shadow: 12px 12px 7px black;
+}
+
+#registration-disclosure-descrip {
+  width: 20vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(128, 0, 0, 0.8),
+    rgba(255, 99, 71, 0.4)
+  );
+}
+
+/* Styling for the Login Page */
+#login-page {
+  background-image: url("./assets/login-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#login-error-message {
+  width: 17vw;
+  padding: 17px;
+  color: black;
+  border: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(5, 132, 14),
+    rgba(36, 235, 51),
+    rgba(41, 162, 8),
+    rgba(57, 238, 134),
+    rgba(5, 239, 41),
+    rgba(10, 214, 84)
+  );
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+#login-intro-container,
+#login-disclosure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#login-intro-title {
+  width: 35vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 3.2rem;
+  border: hidden;
+  border-radius: 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(85, 107, 47, 0.9),
+    rgba(60, 179, 113, 0.6),
+    rgba(152, 251, 152, 0.4)
+  );
+}
+
+.login-descrip {
+  width: 23vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(17, 63, 1, 0.8),
+    rgba(33, 128, 2, 0.5),
+    rgba(62, 224, 8, 0.3)
+  );
+}
+
+#registration-hyperlink {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#registration-hyperlink:visited {
+  color: darkgoldenrod;
+}
+
+#registration-hyperlink:link {
+  color: gold;
+}
+
+#login-disclosure-container {
+  padding-top: 15px;
+  padding-bottom: 35px;
+}
+
+#login-disclosure-descrip {
+  width: 20vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(41, 94, 24, 0.9),
+    rgba(67, 152, 38, 0.7),
+    rgba(106, 223, 67, 0.5),
+    rgba(118, 254, 73, 0.3)
+  );
+}
+
+#login-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  padding: 25px;
+  width: 35vw;
+  border: none;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 100, 0, 0.8),
+    rgba(50, 205, 50, 0.5),
+    rgba(144, 238, 144, 0.2)
+  );
+}
+
+#login-form-container {
+  padding-top: 40px;
+  padding-bottom: 45px;
+}
+
+.login-label {
+  padding-bottom: 15px;
+  color: ghostwhite;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.login-input {
+  border: 2px dashed mediumspringgreen;
+  height: 25px;
+  width: 15vw;
+  display: block;
+  margin-top: 7px;
+}
+
+#login-submission-button {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 15vw;
+  color: ghostwhite;
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    rgba(65, 248, 223),
+    rgba(242, 65, 248),
+    rgba(252, 119, 2),
+    rgba(2, 252, 88),
+    rgba(215, 39, 107)
+  );
+}
+
+#login-submission-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 8px 11px black;
+}
+
+/* Styling for the Single Theory Page */
+#single-theory-page {
+  background-image: url("./assets/single-theory-page-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#single-theory,
+#single-theory-intro-container,
+#theory-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#single-theory-intro-title {
+  width: 35vw;
+  padding: 10px;
+  margin-bottom: 50px;
+  color: ghostwhite;
+  font-size: 3rem;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(101, 5, 123, 0.8),
+    rgba(190, 25, 228, 0.3)
+  );
+}
+
+#theory-title {
+  color: ghostwhite;
+  margin-top: 25px;
+  width: 25vw;
+  padding: 15px;
+  font-size: 2rem;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(68, 15, 109, 0.8),
+    rgba(176, 75, 254, 0.3)
+  );
+}
+
+#theory-descrip {
+  color: ghostwhite;
+  padding: 15px;
+  margin-bottom: 50px;
+  width: 30vw;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(109, 47, 110, 0.9),
+    rgba(240, 150, 242, 0.4)
+  );
+}
+
+#average-score-container {
+  float: left;
+  width: 250px;
+}
+
+#average-score {
+  color: ghostwhite;
+}
+
+#review-form-container {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(180, 180, 180, 0.4)
+  );
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+#review-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  padding: 25px;
+  width: 35vw;
+}
+
+#user-review-label {
+  padding-bottom: 15px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+#user-review-input {
+  height: 100px;
+  width: 300px;
+  display: block;
+  margin-top: 7px;
+  font-size: 1.2rem;
+}
+
+#review-submission-button {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  height: 45px;
+  width: 15vw;
+  color: aliceblue;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  background-image: linear-gradient(
+    to left,
+    rgba(252, 10, 10),
+    rgba(70, 114, 221),
+    rgba(162, 234, 148),
+    rgba(216, 30, 115),
+    rgba(9, 77, 102),
+    rgba(227, 227, 48),
+    rgba(87, 133, 23)
+  );
+}
+
+#review-submission-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 8px 11px ghostwhite;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 5px;
+}
+
+#star-rating {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#rating-total {
+  color: ghostwhite;
+  font-weight: 600;
+}
+
+/* Styling for the User Account Page */
+#user-account-page {
+  background-image: url("./assets/user-account-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#account-intro-title {
+  font-size: 3rem;
+  color: turquoise;
+}
+
+.account-intro-descrip {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: cyan;
+}
+
+#account-details-title {
+  font-size: 2rem;
+  color: ghostwhite;
+}
+
+.user-information {
+  font-size: 1.3rem;
+  color: ghostwhite;
+}
+
+#account-details-container {
+  width: 35vw;
+  margin-bottom: 25px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#user-reviews-container,
+#user-comments-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 30vw;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+#user-reviews-title,
+.user-reviews-info,
+.user-reviews-score,
+#user-comments-title,
+.user-comments-info,
+.user-comment-info {
+  color: ghostwhite;
+}
+
+#user-reviews-title,
+#user-comments-title {
+  font-size: 1.6rem;
+}
+
+.user-reviews,
+.user-comments {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 2px solid lime;
+}
+
+.user-reviews-info,
+.user-comments-info,
+.user-comment-info {
+  font-size: 1.2rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+.user-reviews-score {
+  font-size: 1.2rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.user-comment-info {
+  padding-bottom: 15px;
+}
+
+/* Styling for the scorecard component */
+#scorecard {
+  width: 35vw;
+  margin-bottom: 50px;
+  color: ghostwhite;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  background-color: rgb(16, 38, 57, 0.5);
+}
+
+#scorecard-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.scorecard-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.scorecard-bar {
+  width: 200px;
+  height: 18px;
+  background-color: #f1f1f159;
+}
+
+.bar-5 {
+  height: 18px;
+  background-color: #ff0000;
+}
+.bar-4 {
+  height: 18px;
+  background-color: #ff8000;
+}
+.bar-3 {
+  height: 18px;
+  background-color: #73ff00;
+}
+.bar-2 {
+  height: 18px;
+  background-color: #00ffea;
+}
+.bar-1 {
+  height: 18px;
+  background-color: #ff00f7;
+}
+
+#reviews-portal-button {
+  margin-top: 0;
+  margin-bottom: 25px;
+  height: 30px;
+  width: 13vw;
+  color: midnightblue;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  background-image: linear-gradient(
+    to left,
+    rgba(17, 63, 1, 0.8),
+    rgba(252, 119, 2, 0.5),
+    rgba(41, 224, 2, 0.2)
+  );
+}
+
+#reviews-portal-button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgba(118, 94, 33, 0.8),
+    rgba(65, 238, 8, 0.5),
+    rgba(255, 0, 105, 0.2)
+  );
+  cursor: pointer;
+}
+
+.average-star {
+  cursor: default;
+  font-size: 2rem;
+  margin: 5px;
+}
+
+/* Styling for the Reviews page */
+#reviews-page {
+  background-image: url("./assets/Reviews-Page-BG.jpg");
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#reviews-intro-title {
+  margin-top: 0;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#theory-title-2 {
+  color: ghostwhite;
+  margin-top: 25px;
+  width: 25vw;
+  padding: 15px;
+  font-size: 2rem;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(109, 43, 15, 0.8),
+    rgba(200, 254, 75, 0.3)
+  );
+}
+
+#secret-button-container {
+  margin-left: 90%;
+}
+
+#secret-button-1 {
+  margin-top: 5px;
+  font-size: 1.5rem;
+}
+
+#secret-button-1:hover {
+  cursor: pointer;
+}
+
+#review-cards-container {
+  width: 80%;
+}
+
+.reviews-card {
+  background-color: black;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 5px solid lime;
+  border-left: 5px solid cyan;
+  width: 100%;
+}
+
+.reviews-info,
+.reviews-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(255, 0, 0);
+  text-align: justify;
+}
+
+.reviews-info,
+.comments-info,
+.replies-info {
+  margin-top: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.reviews-username,
+.comments-username,
+.replies-username {
+  padding-left: 5px;
+}
+
+.comment-container {
+  margin-left: 95%;
+}
+
+.edit-delete-container {
+  display: flex;
+  width: 15%;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.edit-delete-box {
+  display: flex;
+}
+
+.edit-delete-container-2 {
+  display: flex;
+  width: 15%;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.edit-delete-box-2 {
+  display: flex;
+}
+
+.edit-delete-container-3 {
+  display: flex;
+  width: 15%;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.edit-delete-box-3 {
+  display: flex;
+}
+
+.delete-button {
+  padding-left: 25px;
+}
+
+.edit-button,
+.delete-button {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+}
+
+.comment-button,
+.reply-button {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.comment-button:hover,
+.reply-button:hover {
+  cursor: pointer;
+}
+
+.user-icon {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  margin-top: 18px;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.user-box {
+  display: flex;
+}
+
+.comment-button {
+  margin-top: 35px;
+}
+
+.comments-card {
+  background-color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 5px solid orchid;
+  border-left: 5px solid red;
+  width: 60%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 10%;
+}
+
+.comments-info,
+.comments-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: blue;
+  text-align: justify;
+}
+
+.replies-card {
+  background-color: gray;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 5px solid gold;
+  border-left: 5px solid mediumvioletred;
+  width: 45%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 13%;
+}
+
+.replies-info,
+.replies-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: chartreuse;
+  text-align: justify;
+}
+
+.reply-button {
+  margin-top: 35px;
+}
+
+.replies-fireback-container {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.comments-fireback-container {
+  display: flex;
+  width: 45%;
+  justify-content: flex-start;
+  margin-top: 15px;
+  margin-left: 5%;
+}
+
+.replies-fireback-sidebar-l,
+.comments-fireback-sidebar-l {
+  width: 10%;
+  height: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+}
+
+.replies-fireback-sidebar-r,
+.comments-fireback-sidebar-r {
+  width: 10%;
+  height: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+}
+
+.replies-fireback,
+.comments-fireback {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.edit-review-input {
+  width: 75%;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.edit-review-submit-button {
+  width: 10%;
+  font-size: 1rem;
+  height: 30px;
+  color: ghostwhite;
+  background-color: darkslateblue;
+}
+
+.edit-comment-input {
+  width: 50%;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 0.75rem;
+}
+
+.edit-comment-submit-button {
+  width: 20%;
+  font-size: 0.75rem;
+  height: 25px;
+  color: ghostwhite;
+  background-color: cadetblue;
+  border: none;
+}
+
+.reply-input {
+  width: 35%;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 15%;
+  margin-bottom: 10px;
+  padding: 3px;
+  font-size: 1rem;
+  border: 4px dotted yellowgreen;
+}
+
+.reply-submit-button {
+  width: 10%;
+  font-size: 1rem;
+  height: 30px;
+  color: ghostwhite;
+  background-color: coral;
+  border: 2px solid antiquewhite;
+}
+
+.comment-form-input {
+  width: 45%;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 5%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 3px;
+  font-size: 1rem;
+  border: 3px dashed maroon;
+}
+
+.comment-form-submit-button {
+  width: 10%;
+  font-size: 1rem;
+  height: 30px;
+  color: ghostwhite;
+  background-color: indianred;
+  border: 3px dotted antiquewhite;
+}
