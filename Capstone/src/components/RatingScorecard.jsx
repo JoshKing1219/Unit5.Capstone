@@ -1,6 +1,4 @@
 export default function RatingScorecard({ reviews }) {
-
-    console.log(reviews);
     if (!reviews) {
       return <span></span>;
     }

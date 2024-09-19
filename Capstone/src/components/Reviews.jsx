@@ -1,10 +1,10 @@
 import {
   useGetTheoryQuery,
   useCreateCommentMutation,
-  useCreateReplyMutation,
-  useDeleteCommentMutation,
+  useDeleteReviewMutation,
+  useUpdateReviewMutation,
 } from "../api/index.js";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,9 +13,6 @@ import {
   faMagicWandSparkles,
   faStreetView,
   faArrowRightToBracket,
-  faUserSecret,
-  faArrowsTurnRight,
-  faGhost,
   faSkullCrossbones,
 } from "@fortawesome/free-solid-svg-icons";
 import Comments from "./Comments.jsx";
@@ -40,13 +37,27 @@ function Reviews({ token, userId }) {
   const [showReviewUpdateForm, updateShowReviewUpdateForm] = useState(false);
   const [currentReviewIndex, updateCurrentReviewIndex] = useState(null);
 
-  const handleEditClick = (index, reviewId) => {
+  const handleEditClick = (index, review) => {
     updateShowReviewUpdateForm(!showReviewUpdateForm);
     updateCurrentReviewIndex(index);
-    updateCurrentReviewId(reviewId);
+    updateCurrentReviewId(review.id);
+    setNewUserReview(review.user_review);
   };
 
   const [newUserReview, setNewUserReview] = useState("");
+  const [newReview] = useUpdateReviewMutation();
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+
+    await newReview({
+      id: currentReviewId,
+      body: { user_review: newUserReview },
+      token,
+    });
+
+    updateShowReviewUpdateForm(false);
+  };
 
   const [showCommentForm, updateShowCommentForm] = useState(false);
   const [currentIndex, updateCurrentIndex] = useState(null);
@@ -68,6 +79,25 @@ function Reviews({ token, userId }) {
 
     updateShowCommentForm(false);
   };
+
+  const [deleteReview] = useDeleteReviewMutation();
+
+  const handleDeleteReview = async (reviewId) => {
+    await deleteReview({ id: reviewId, token });
+  };
+
+  const textAreaRef = useRef(null);
+
+  const resizeTextArea = () => {
+    console.log(textAreaRef);
+    textAreaRef.current.style.height = "auto";
+    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
+  };
+
+  useEffect(() => {
+    textAreaRef.current = { style: { height: "auto" }, scrollHeight: 10 };
+  }, []);
+  useEffect(resizeTextArea, [newUserReview]);
 
   return (
     <section id="reviews-page">
@@ -124,7 +154,7 @@ function Reviews({ token, userId }) {
                         display: review.user_id === userId ? "block" : "none",
                       }}
                       className="edit-button"
-                      onClick={() => handleEditClick(index, review.id)}
+                      onClick={() => handleEditClick(index, review)}
                     />
                     <FontAwesomeIcon
                       icon={faSkullCrossbones}
@@ -133,6 +163,7 @@ function Reviews({ token, userId }) {
                         display: review.user_id === userId ? "block" : "none",
                       }}
                       className="delete-button"
+                      onClick={() => handleDeleteReview(review.id)}
                     />
                   </div>
                 </div>
@@ -149,12 +180,15 @@ function Reviews({ token, userId }) {
 
                 {showReviewUpdateForm && currentReviewIndex === index ? (
                   <div className="edit-review-container">
-                    <form onSubmit={handleSubmit} className="edit-review-form">
+                    <form
+                      onSubmit={handleUpdateSubmit}
+                      className="edit-review-form"
+                    >
                       <label className="edit-review-label">
-                        <input
+                        <textarea
                           name="user_review"
                           value={newUserReview}
-                          placeholder={review.user_review}
+                          ref={textAreaRef}
                           onChange={(evnt) =>
                             setNewUserReview(evnt.target.value)
                           }

@@ -67,6 +67,17 @@ export const rabbitHoleApi = createApi({
         },
         body,
       }),
+      invalidatesTags: ["reviews"],
+    }),
+    deleteReview: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `/api/theories/reviews/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `${token}`,
+        },
+      }),
+      invalidatesTags: ["reviews"],
     }),
 
     createComment: builder.mutation({
@@ -80,9 +91,20 @@ export const rabbitHoleApi = createApi({
       }),
       invalidatesTags: ["comments"],
     }),
+    updateComment: builder.mutation({
+      query: ({ id, body, token }) => ({
+        url: `/api/reviews/comments/${id}`,
+        method: "PUT",
+        headers: {
+          authorization: `${token}`,
+        },
+        body,
+      }),
+      invalidatesTags: ["comments"],
+    }),
     deleteComment: builder.mutation({
       query: ({ id, token }) => ({
-        url: `/api/comments/${id}`,
+        url: `/api/reviews/comments/${id}`,
         method: "DELETE",
         headers: {
           authorization: `${token}`,
@@ -102,6 +124,27 @@ export const rabbitHoleApi = createApi({
       }),
       invalidatesTags: ["replies"],
     }),
+    updateReply: builder.mutation({
+      query: ({ id, body, token }) => ({
+        url: `/api/comments/replies/${id}`,
+        method: "PUT",
+        headers: {
+          authorization: `${token}`,
+        },
+        body,
+      }),
+      invalidatesTags: ["replies"],
+    }),
+    deleteReply: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `/api/comments/replies/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `${token}`,
+        },
+      }),
+      invalidatesTags: ["replies"],
+    }),
   }),
 });
 
@@ -114,5 +157,10 @@ export const {
   useCreateReviewMutation,
   useCreateCommentMutation,
   useCreateReplyMutation,
+  useUpdateReviewMutation,
+  useUpdateCommentMutation,
+  useUpdateReplyMutation,
   useDeleteCommentMutation,
+  useDeleteReviewMutation,
+  useDeleteReplyMutation,
 } = rabbitHoleApi;

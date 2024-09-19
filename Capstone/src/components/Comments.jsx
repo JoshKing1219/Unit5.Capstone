@@ -7,29 +7,26 @@ import {
 import {
   useCreateReplyMutation,
   useDeleteCommentMutation,
+  useUpdateCommentMutation,
 } from "../api/index.js";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Replies from "./Replies";
 
 export default function Comments({ comments, token, userId }) {
-  console.log(comments);
-  if (!comments) {
-    return <span></span>;
-  }
   const [newUserComment, setNewUserComment] = useState("");
   const [showReplyForm, updateShowReplyForm] = useState(false);
 
   const [reply, setReply] = useState("");
 
   const [currentCommentId, updateCurrentCommentId] = useState(null);
-  const [idForDelete, setIdForDelete] = useState("");
 
   const [showCommentUpdateForm, updateShowCommentUpdateForm] = useState(false);
 
-  const handleEditCommentClick = (commentId) => {
+  const handleEditCommentClick = (comment) => {
     updateShowCommentUpdateForm(!showCommentUpdateForm);
-    updateCurrentCommentId(commentId);
+    updateCurrentCommentId(comment.id);
+    setNewUserComment(comment.comment);
   };
 
   const [createReply] = useCreateReplyMutation();
@@ -50,9 +47,38 @@ export default function Comments({ comments, token, userId }) {
   const [deleteComment] = useDeleteCommentMutation();
 
   const handleDeleteCommentClick = async (commentId) => {
-    setIdForDelete(commentId);
-    await deleteComment({ id: idForDelete, token });
+    await deleteComment({ id: commentId, token });
   };
+
+  const textAreaRef = useRef(null);
+
+  const resizeTextArea = () => {
+    textAreaRef.current.style.height = "auto";
+    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
+  };
+
+  useEffect(() => {
+    textAreaRef.current = { style: { height: "auto" }, scrollHeight: 10 };
+  }, []);
+  useEffect(resizeTextArea, [newUserComment]);
+
+  const [newComment] = useUpdateCommentMutation();
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+
+    await newComment({
+      id: currentCommentId,
+      body: { comment: newUserComment },
+      token,
+    });
+
+    updateShowCommentUpdateForm(false);
+  };
+
+  if (!comments) {
+    return <span></span>;
+  }
 
   return (
     <div className="comment-cards-container">
@@ -81,9 +107,7 @@ export default function Comments({ comments, token, userId }) {
                               : "none",
                         }}
                         className="edit-button"
-                        onClick={() =>
-                          handleEditCommentClick(review_comment.id)
-                        }
+                        onClick={() => handleEditCommentClick(review_comment)}
                       />
                       <FontAwesomeIcon
                         icon={faSkullCrossbones}
@@ -117,12 +141,15 @@ export default function Comments({ comments, token, userId }) {
                   {showCommentUpdateForm &&
                   currentCommentId === review_comment.id ? (
                     <div className="edit-comment-container">
-                      <form className="edit-comment-form">
+                      <form
+                        className="edit-comment-form"
+                        onSubmit={handleUpdateSubmit}
+                      >
                         <label className="edit-comment-label">
-                          <input
+                          <textarea
                             name="user_review"
                             value={newUserComment}
-                            placeholder={review_comment.comment}
+                            ref={textAreaRef}
                             onChange={(evnt) =>
                               setNewUserComment(evnt.target.value)
                             }

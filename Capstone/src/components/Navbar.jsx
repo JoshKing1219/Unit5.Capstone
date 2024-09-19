@@ -4,7 +4,6 @@ function Navbar({ token, setToken }) {
   const navigate = useNavigate();
 
   let location = useLocation();
-  console.log(location);
 
   const logoutUser = () => {
     setToken(null);
@@ -19,18 +18,25 @@ function Navbar({ token, setToken }) {
   if (token) {
     return (
       <nav id="navbar">
-        <NavLink to="/theories" className={"navbar-link"}>
-          All Theories
-        </NavLink>
-        <NavLink to="/my-account" className={"navbar-link"}>
-          My Account
-        </NavLink>
+        <div className="links-container">
+          <NavLink to="/theories" className={"navbar-link"}>
+            All Theories
+          </NavLink>
+          <NavLink to="/my-account" className={"navbar-link"}>
+            My Account
+          </NavLink>
+        </div>
+        <div className="logout-button-container">
+          <a onClick={logoutUser} className="logout-button">
+            Logout
+          </a>
+        </div>
       </nav>
     );
   }
 
   return (
-    <nav id="navbar">
+    <nav id="logged-out-navbar">
       <NavLink to="/register" className={"navbar-link"}>
         Register
       </NavLink>

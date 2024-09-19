@@ -6,8 +6,6 @@ const AllTheories = () => {
   const navigate = useNavigate();
   const { data, error, isLoading, isSuccess } = useGetTheoriesQuery();
 
-  console.log(data);
-
   const [type, setType] = useState(null);
   const [searchParameter, setSearchParameter] = useState("");
 

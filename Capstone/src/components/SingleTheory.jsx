@@ -13,8 +13,6 @@ function SingleTheory({ token }) {
 
   const { data = {}, err, isLoading, isSuccess } = useGetTheoryQuery(id);
 
-  console.log(data);
-
   let message;
 
   if (isLoading) {

@@ -81,6 +81,28 @@ function UserAccount({ token }) {
           </div>
         ))}
       </div>
+      <div id="user-replies-container">
+        <div id="user-replies-intro">
+          <h3 id="user-replies-title">My Replies</h3>
+        </div>
+        {data?.replies?.map((userReply) => (
+          <div className="user-replies" key={userReply.id}>
+            <p className="user-replies-info">
+              <strong>Theory:</strong> {userReply.comment.review.theory.title}
+            </p>
+            <p className="user-replies-info">
+              <strong>Original Review:</strong>{" "}
+              {userReply.comment.review.user_review}
+            </p>
+            <p className="user-replies-info">
+              <strong>Original Comment:</strong> {userReply.comment.comment}
+            </p>
+            <p className="user-reply-info">
+              <strong>My Reply:</strong> {userReply.reply}
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

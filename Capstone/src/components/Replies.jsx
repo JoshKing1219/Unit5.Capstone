@@ -3,24 +3,63 @@ import {
   faGhost,
   faSkullCrossbones,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import {
+  useDeleteReplyMutation,
+  useUpdateReplyMutation,
+} from "../api/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Replies({ replies, token, userId }) {
-  console.log(replies);
+  // console.log(replies);
+  const [newUserReply, setNewUserReply] = useState("");
+
+  const [currentReplyId, updateCurrentReplyId] = useState(null);
+
+  const [showReplyUpdateForm, updateShowReplyUpdateForm] = useState(false);
+
+  const handleEditReplyClick = (reply) => {
+    updateShowReplyUpdateForm(!showReplyUpdateForm);
+    updateCurrentReplyId(reply.id);
+    setNewUserReply(reply.reply);
+  };
+
+  const [deleteReply] = useDeleteReplyMutation();
+
+  const handleDeleteReplyClick = async (replyId) => {
+    await deleteReply({ id: replyId, token });
+  };
+
+  const textAreaRef = useRef(null);
+
+  const resizeTextArea = () => {
+    textAreaRef.current.style.height = "auto";
+    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
+  };
+
+  useEffect(() => {
+    textAreaRef.current = { style: { height: "auto" }, scrollHeight: 10 };
+  }, []);
+  useEffect(resizeTextArea, [newUserReply]);
+
+  const [newReply] = useUpdateReplyMutation();
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+
+    await newReply({
+      id: currentReplyId,
+      body: { reply: newUserReply },
+      token,
+    });
+
+    updateShowReplyUpdateForm(false);
+  };
+
   if (!replies) {
     return <span></span>;
   }
 
-  const [showReviewUpdateForm, updateShowReviewUpdateForm] = useState(false);
-  const [currentReviewIndex, updateCurrentReviewIndex] = useState(null);
-
-  const handleEditClick = (index, reviewId) => {
-    updateShowReviewUpdateForm(!showReviewUpdateForm);
-    updateCurrentReviewIndex(index);
-    updateCurrentReviewId(reviewId);
-  };
-  
   return (
     <div id="reply-cards-container">
       {replies.length > 0 ? (
@@ -37,7 +76,7 @@ export default function Replies({ replies, token, userId }) {
                         comment_reply.replier_id === userId ? "block" : "none",
                     }}
                     className="edit-button"
-                    onClick={() => handleEditClick(index, review.id)}
+                    onClick={() => handleEditReplyClick(comment_reply)}
                   />
                   <FontAwesomeIcon
                     icon={faSkullCrossbones}
@@ -47,6 +86,7 @@ export default function Replies({ replies, token, userId }) {
                         comment_reply.replier_id === userId ? "block" : "none",
                     }}
                     className="delete-button"
+                    onClick={() => handleDeleteReplyClick(comment_reply.id)}
                   />
                 </div>
               </div>
@@ -63,7 +103,27 @@ export default function Replies({ replies, token, userId }) {
                 </p>
               </div>
 
-              <p className="replies-info">{comment_reply.reply}</p>
+              {showReplyUpdateForm && currentReplyId === comment_reply.id ? (
+                <div className="edit-reply-container">
+                  <form
+                    className="edit-reply-form"
+                    onSubmit={handleUpdateSubmit}
+                  >
+                    <label className="edit-reply-label">
+                      <textarea
+                        name="user_reply"
+                        value={newUserReply}
+                        ref={textAreaRef}
+                        onChange={(evnt) => setNewUserReply(evnt.target.value)}
+                        className="edit-reply-input"
+                      />
+                    </label>
+                    <button className="edit-reply-submit-button">Submit</button>
+                  </form>
+                </div>
+              ) : (
+                <p className="replies-info">{comment_reply.reply}</p>
+              )}
             </div>
           </div>
         ))
