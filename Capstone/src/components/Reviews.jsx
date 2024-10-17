@@ -111,14 +111,6 @@ function Reviews({ token, userId }) {
         />
       </div>
 
-      <div id="secret-button-container">
-        <FontAwesomeIcon
-          icon={faSpaghettiMonsterFlying}
-          style={{ color: "#ababab" }}
-          id="secret-button-1"
-        />
-      </div>
-
       <div id="reviews-intro-container">
         <h2 id="reviews-intro-title">
           All Reviews For <br />
