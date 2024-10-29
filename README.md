@@ -8,6 +8,11 @@ Below are links to Visual Documentations of Wireframe rought drafts, API Docs, a
 - [Wireframes](https://whimsical.com/capstone-FhoD1E56N37sFLVebJxjGr)
 - [API Docs](https://whimsical.com/api-documentation-4B2usAnUw77zMRo8Bv1pv7)
 
+## Steps to Run
+- cd Capstone
+- npm run dev
+
+
 ## Requirements
 
 ### Tier 1 (MVP)
