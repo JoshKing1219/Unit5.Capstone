@@ -10,6 +10,7 @@ Below are links to Visual Documentations of Wireframe rought drafts, API Docs, a
 
 ## Steps to Run
 - cd Capstone
+- npm install
 - npm run dev
 
 
